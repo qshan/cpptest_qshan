@@ -12,7 +12,7 @@
 int main()
 {
 	int inputdata;
-#if 1
+#if 0
 //exmaple the standard cout/cin/endl
 	std::cout << "Hello cpp!" << std::endl;
 	std::cout << "Please input your data: " << std::endl;
@@ -20,7 +20,7 @@ int main()
 	std::cout << "your inputdata is: " <<inputdata << std::endl;
 #endif
 
-#if 1
+#if 0
 //example of specifying the cout/cin/endl
 	using std::cout;
 	using std::endl;
