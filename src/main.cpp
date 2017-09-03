@@ -9,12 +9,13 @@
 #include <iostream>
 #include "practice_cpp.h"
 
-using namespace std;
-using std::string;
+
 
 int main()
 {
     int inputdata;
+    int outputdata;
+    int *p;
 
 #if 0
 //exmaple the standard cout/cin/endl
@@ -35,7 +36,7 @@ int main()
     cout << "your inputdata is: " <<inputdata << std::endl;
 #endif
 
-#if 1
+#if 0
 //example of specifying the namespace
     using namespace std;
     cout << "Hello cpp!" << std::endl;
@@ -47,7 +48,30 @@ int main()
 
 
 
-    cout << "your inputdata is: ";
+    cout << "^-^ " << std::endl;
+
+    inputdata = 20;
+    p = &inputdata;
+    cout << "#pinter test#try to use the pointer" << std::endl;
+    cout << "data is " << *p << std::endl;
+
+
+
+    struct struct_test_qshan
+    {
+      string name;
+      int old;
+      string job;
+    };
+
+    struct_test_qshan test_struct_test_qshan;
+
+    test_struct_test_qshan.name = "Xiaoxiao";
+    test_struct_test_qshan.old = 15;
+    test_struct_test_qshan.job = "Student";
+
+    cout << test_struct_test_qshan.name << " " << test_struct_test_qshan.old << std::endl;
+
 
 
     //printf("\n##this is end of %s in %s##\n", __func__, __FILE__);
