@@ -64,6 +64,14 @@ int main()
       string job;
     };
 
+    struct struct_test_qshan1
+    {
+      string name;
+      int old;
+      string job;
+    } test_struct_test_qshan1;
+
+
     struct_test_qshan test_struct_test_qshan;
 
     test_struct_test_qshan.name = "Xiaoxiao";
@@ -72,6 +80,32 @@ int main()
 
     cout << test_struct_test_qshan.name << " " << test_struct_test_qshan.old << std::endl;
 
+    typedef struct
+    {
+      string name;
+      int old;
+      string job;
+    } struct_test_qshan2;
+
+    struct_test_qshan2 test_struct_test_qshan2;
+
+
+
+    person_test_qshan test_person_test_qshan;
+
+    cout << std::endl  << std::endl;
+    test_person_test_qshan.set_name("Xiao-xiao");
+    test_person_test_qshan.display_name();
+
+
+    son_test_qshan test_son_test_qshan;
+
+    cout << std::endl  << std::endl;
+    test_son_test_qshan.set_name("Xiaoxiao");
+    test_son_test_qshan.display_name();
+    cout << std::endl;
+    test_son_test_qshan.set_job("Student");
+    test_son_test_qshan.display_job();
 
 
     //printf("\n##this is end of %s in %s##\n", __func__, __FILE__);
@@ -81,3 +115,4 @@ int main()
     cout << "##this is end of cpptest_qshan## ^-^" <<  std::endl;
     return 0;
 }
+
