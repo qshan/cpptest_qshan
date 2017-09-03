@@ -49,8 +49,11 @@ int main()
 
     cout << "your inputdata is: ";
 
-    printf("\n##this is end of %s in %s##\n", __func__, __FILE__);
-    printf("\n^-^ ##this is end of cpptest_qshan## ^-^\n");
 
+    //printf("\n##this is end of %s in %s##\n", __func__, __FILE__);
+    //printf("\n^-^ ##this is end of cpptest_qshan## ^-^\n");
+    cout << std::endl  << std::endl;
+    cout << "##this is end of " << __func__ << "in " << __FILE__ <<  std::endl;
+    cout << "##this is end of cpptest_qshan## ^-^" <<  std::endl;
     return 0;
 }
