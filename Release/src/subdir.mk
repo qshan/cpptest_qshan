@@ -4,20 +4,20 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../src/qshan_cpp/practice_cpp.cpp 
+../src/main.cpp 
 
 OBJS += \
-./src/qshan_cpp/practice_cpp.o 
+./src/main.o 
 
 CPP_DEPS += \
-./src/qshan_cpp/practice_cpp.d 
+./src/main.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
-src/qshan_cpp/%.o: ../src/qshan_cpp/%.cpp
+src/%.o: ../src/%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C++ Compiler'
-	g++ -I"/home/qshan/workspace-new/cpptest_qshan/src/qshan_cpp" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
+	g++ -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

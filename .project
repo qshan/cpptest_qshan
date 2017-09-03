@@ -3,6 +3,7 @@
 	<name>cpptest_qshan</name>
 	<comment></comment>
 	<projects>
+		<project>cpptest_qshan</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -24,11 +25,4 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>qshan_cpp</name>
-			<type>2</type>
-			<location>/home/qshan/workspace-new/cpptest_qshan/src/qshan_cpp</location>
-		</link>
-	</linkedResources>
 </projectDescription>

@@ -41,11 +41,8 @@ endif
 # All Target
 all: cpptest_qshan
 
-dependents:
-	-cd /home/qshan/workspace-new/cpptest_qshan/Release && $(MAKE) all
-
 # Tool invocations
-cpptest_qshan: $(OBJS) $(USER_OBJS) /home/qshan/workspace-new/cpptest_qshan/Release/cpptest_qshan
+cpptest_qshan: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
 	g++  -o "cpptest_qshan" $(OBJS) $(USER_OBJS) $(LIBS)
@@ -59,6 +56,5 @@ clean:
 
 .PHONY: all clean dependents
 .SECONDARY:
-/home/qshan/workspace-new/cpptest_qshan/Release/cpptest_qshan:
 
 -include ../makefile.targets

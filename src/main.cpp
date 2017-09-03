@@ -9,7 +9,8 @@
 #include <iostream>
 #include "practice_cpp.h"
 
-
+using namespace std;
+using std::string;
 
 int main()
 {
@@ -89,25 +90,13 @@ int main()
 
     struct_test_qshan2 test_struct_test_qshan2;
 
+//class test example
+    class_test_qshan();
 
 
-    person_test_qshan test_person_test_qshan;
-
-    cout << std::endl  << std::endl;
-    test_person_test_qshan.set_name("Xiao-xiao");
-    test_person_test_qshan.display_name();
 
 
-    son_test_qshan test_son_test_qshan;
-
-    cout << std::endl  << std::endl;
-    test_son_test_qshan.set_name("Xiaoxiao");
-    test_son_test_qshan.display_name();
-    cout << std::endl;
-    test_son_test_qshan.set_job("Student");
-    test_son_test_qshan.display_job();
-
-
+///////////////////////////////////////////////////////////////////////////////
     //printf("\n##this is end of %s in %s##\n", __func__, __FILE__);
     //printf("\n^-^ ##this is end of cpptest_qshan## ^-^\n");
     cout << std::endl  << std::endl;
