@@ -6,6 +6,47 @@
 using namespace std;
 using std::string;
 
+
+void struct_test_qshan(void)
+{
+
+  struct struct_test_qshan
+  {
+    string name;
+    int old;
+    string job;
+  };
+
+  struct struct_test_qshan1
+  {
+    string name;
+    int old;
+    string job;
+  } test_struct_test_qshan1;
+
+
+  struct_test_qshan test_struct_test_qshan;
+
+  test_struct_test_qshan.name = "Xiaoxiao";
+  test_struct_test_qshan.old = 15;
+  test_struct_test_qshan.job = "Student";
+
+  cout << test_struct_test_qshan.name << " " << test_struct_test_qshan.old << std::endl;
+
+  typedef struct
+  {
+    string name;
+    int old;
+    string job;
+  } struct_test_qshan2;
+
+  struct_test_qshan2 test_struct_test_qshan2;
+
+  cout << "##this is end of## " << __func__ << " in " << __FILE__ <<  std::endl;
+}
+
+
+
 class person_test_qshan
 {
 public:
@@ -75,5 +116,5 @@ void class_test_qshan(void)
   test_son_test_qshan.display_job();
 
   cout << std::endl  << std::endl;
-  cout << "##this is end of## " << __func__ << "in " << __FILE__ <<  std::endl;
+  cout << "##this is end of## " << __func__ << " in " << __FILE__ <<  std::endl;
 }

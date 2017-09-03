@@ -47,8 +47,6 @@ int main()
 #endif
 
 
-
-
     cout << "^-^ " << std::endl;
 
     inputdata = 20;
@@ -56,41 +54,10 @@ int main()
     cout << "#pinter test#try to use the pointer" << std::endl;
     cout << "data is " << *p << std::endl;
 
+//#####struct test example
+    struct_test_qshan();
 
-
-    struct struct_test_qshan
-    {
-      string name;
-      int old;
-      string job;
-    };
-
-    struct struct_test_qshan1
-    {
-      string name;
-      int old;
-      string job;
-    } test_struct_test_qshan1;
-
-
-    struct_test_qshan test_struct_test_qshan;
-
-    test_struct_test_qshan.name = "Xiaoxiao";
-    test_struct_test_qshan.old = 15;
-    test_struct_test_qshan.job = "Student";
-
-    cout << test_struct_test_qshan.name << " " << test_struct_test_qshan.old << std::endl;
-
-    typedef struct
-    {
-      string name;
-      int old;
-      string job;
-    } struct_test_qshan2;
-
-    struct_test_qshan2 test_struct_test_qshan2;
-
-//class test example
+//#####class test example
     class_test_qshan();
 
 
@@ -100,7 +67,7 @@ int main()
     //printf("\n##this is end of %s in %s##\n", __func__, __FILE__);
     //printf("\n^-^ ##this is end of cpptest_qshan## ^-^\n");
     cout << std::endl  << std::endl;
-    cout << "##this is end of " << __func__ << "in " << __FILE__ <<  std::endl;
+    cout << "##this is end of## " << __func__ << " in " << __FILE__ <<  std::endl;
     cout << "##this is end of cpptest_qshan## ^-^" <<  std::endl;
     return 0;
 }
