@@ -52,11 +52,11 @@ class person_test_qshan
 public:
   string name;
   int old;
-
   void set_name(string u_name);
   void display_name(void);
   string get_name(void);
 };
+
 
 void person_test_qshan::set_name(string u_name)
 {
@@ -75,10 +75,21 @@ class son_test_qshan : public person_test_qshan
 {
 public:
   string job;
+  //int old;
+  //string name;
+
   void set_job (string u_job);
   void display_job (void);
   string get_job (void);
+  son_test_qshan (string u_name, int u_old, string u_job);
 };
+
+son_test_qshan::son_test_qshan (string u_name, int u_old, string u_job)
+{
+  name = u_name;
+  old = u_old;
+  job = u_job;
+}
 
 void son_test_qshan::set_job (string u_job)
 {
@@ -99,6 +110,7 @@ void class_test_qshan(void)
   //int i = 0;
 
 
+  //person_test_qshan test_person_test_qshan("input", 0);
   person_test_qshan test_person_test_qshan;
 
   cout << std::endl  << std::endl;
@@ -106,7 +118,7 @@ void class_test_qshan(void)
   test_person_test_qshan.display_name();
 
 
-  son_test_qshan test_son_test_qshan;
+  son_test_qshan test_son_test_qshan("input", 10, "input");
 
   cout << std::endl  << std::endl;
   test_son_test_qshan.set_name("Xiaoxiao");
