@@ -1,0 +1,23 @@
+#Library('',[])
+#Library('Test01SharedLib', ['../src_shared/test01_shared.c'])
+#Library('Test01SharedLib', ['../src_shared/test01_shared.c'] ,CPPPATH=['../include'])
+
+#Program('',[])
+
+#Program('test01' ,['../src/test01.c' ,CPPPATH=['../src' ,'../scr_shared' ,'../include'] ,['../src/say_hello_01.c'] ,LIBS=['Test01SharedLib'] ,LIBPATH=['.'])
+#Program('test01' ,['../src/test01.c' ,'../src/say_hello_01.c'] ,CPPPATH=['../include'] ,LIBS=['Test01SharedLib'] ,LIBPATH=['.'])
+#Program('test01' ,['test01.c' ,'say_hello_01.c'] ,CPPPATH=['../include'] ,LIBS=['Test01SharedLib'] ,LIBPATH=['../src_shared'])
+#Program('test01' ,Glob('*.c') ,CPPPATH=['../include'] ,LIBS=['Test01SharedLib'] ,LIBPATH=['../src_shared'])
+
+Import("env")
+Import("opt")
+Import("dbg")
+#
+#env.Program('test01' ,Glob('*.c') ,CPPPATH=['../include'] ,LIBS=['Test01SharedLib'] ,LIBPATH=['../build_sc_shared'])
+#env.Program('test01' ,Glob('*.c') ,CPPPATH=['../include'] ,LIBS=['Test01SharedLib'] ,LIBPATH=['../src_shared'])
+#env.Program('test01' ,Glob('*.[s|c|cpp]') ,CPPPATH=['../include'] ,LIBS=['Test01SharedLib'] ,LIBPATH=['../src_shared'])
+#env.Program('test01' ,Glob('*.c*') ,CPPPATH=['../include'] ,LIBS=['Test01SharedLib'] ,LIBPATH=['../src_shared'])
+env.Program('test01' ,Glob('*.c[cp]*') ,CPPPATH=['../include'] ,LIBS=['Test01SharedLib'] ,LIBPATH=['../src_shared'])
+
+#opt.Program('test01-opt' ,Glob('*.c') ,CPPPATH=['../include'] ,LIBS=['Test01SharedLib'] ,LIBPATH=['../src_shared'])
+#dbg.Program('test01-dbg' ,Glob('*.c') ,CPPPATH=['../include'] ,LIBS=['Test01SharedLib'] ,LIBPATH=['../src_shared'])

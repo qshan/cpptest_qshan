@@ -1,0 +1,19 @@
+#Library('',[])
+#Library('Test01SharedLib', ['../src_shared/test01_shared.c'])
+#Library('Test01SharedLib', ['test01_shared.c'] ,CPPPATH=['../include'])
+#StaticLibrary('Test01SharedLib' ,Glob('*.c') ,CPPPATH=['../include'])
+#Library('Test01SharedLib' ,Glob('*.c') ,CPPPATH=['../include'])
+
+#Import('env')
+Import('*')
+#env.Library('Test01SharedLib' ,Glob('*.c') ,CPPPATH=['../include'])
+#env.Library('Test01SharedLib' ,Glob('*.[s|c|cpp]') ,CPPPATH=['../include'])
+#env.Library('Test01SharedLib' ,Glob('*.cpp') ,CPPPATH=['../include'])
+#env.Library('Test01SharedLib' ,Glob('*.c*') ,CPPPATH=['../include'])
+env.Library('Test01SharedLib' ,Glob('*.c[cp]*') ,CPPPATH=['../include'])
+
+#Program('',[])
+
+#Program('test01' ,['../src/test01.c' ,CPPPATH=['../src' ,'../scr_shared' ,'../include'] ,['../src/say_hello_01.c'] ,LIBS=['Test01SharedLib'] ,LIBPATH=['.'])
+#Program('test01' ,['../src/test01.c' ,'../src/say_hello_01.c'] ,CPPPATH=['../include'] ,LIBS=['Test01SharedLib'] ,LIBPATH=['.'])
+#Program('test01' ,['../src/test01.c' ,'../src/say_hello_01.c'] ,CPPPATH=['../include'] ,LIBS=['Test01SharedLib'] ,LIBPATH=['.'])
