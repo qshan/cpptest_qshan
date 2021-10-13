@@ -51,13 +51,18 @@
 
 #CC=gcc
 #CC=g++
+#CXX=g++
 CC=clang
+CXX=clang++
 
 TARGET_EXEC ?= test01
 
 
 BUILD_DIR ?= ./build_make
-SRC_DIRS ?= ./src
+#SRC_DIRS ?= ./src
+SRC_DIRS ?= src
+SRC_SHARED_DIRS ?= shared/src
+
 #log define
 BUILD_LOG_FILE ?= $(BUILD_DIR)/$(TARGET_EXEC).log
 
@@ -71,35 +76,35 @@ TOP_OBJ_SHARED ?= Test01SharedLib.o
 
 #all: $(TARGET_EXEC)
 
-#source code info
-SRCS := $(shell find $(SRC_DIRS) -name *.cpp -or -name *.c -or -name *.s)
-#SRCS := $(shell find $(SRC_DIRS)  -name *.c -or -name *.s)
-OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
-DEPS := $(OBJS:.o=.d)
-
 #source code for shared lib
 #SRC_SHARED  = $(wildcard src_shared/*.c)
 #SRC_SHARED  = $(wildcard src_shared/*.c src_shared/*.cpp src_shared/*.s)
-#SRC_SHARED  = $(wildcard src_shared/*.c src_shared/*.cpp)
-SRC_SHARED  = $(wildcard shared/src/*.c shared/src/*.cpp)
+SRC_SHARED  = $(wildcard $(SRC_SHARED_DIRS)/*.c $(SRC_SHARED_DIRS)/*.cpp)
 #OBJ_SHARED  = $(SRC:.c=.o)
 OBJ_SHARED  = $(SRC_SHARED:%=$(BUILD_DIR)/%.o)
 
+#ToCheck
+#include/HeadhFile path for shared lib generating info
+INC_DIRS_SHARED				:= ./shared/header
+INC_FLAGS_SHARED			:= $(addprefix -I,$(INC_DIRS_SHARED))
 
-#include/HeadhFile path info
-INC_DIRS_SHARED += ./shared/header
-INC_FLAGS_SHARED := $(addprefix -I,$(INC_DIRS_SHARED))
-CFLAGS_SHARED   ?= -fPIC -shared $(INC_FLAGS_SHARED)
+CFLAGS_SHARED					?= $(INC_FLAGS_SHARED) -fPIC -shared
+CPPFLAGS_SHARED				?= $(INC_FLAGS_SHARED) -fPIC -shared
 
-#include/HeadhFile path info
-INC_DIRS := $(shell find $(SRC_DIRS) -type d)
-INC_DIRS += ./include
-INC_DIRS += $(INC_DIRS_SHARED)
-INC_FLAGS := $(addprefix -I,$(INC_DIRS))
+#source code info
+SRCS									:= $(shell find $(SRC_DIRS) -name *.cpp -or -name *.c -or -name *.s)
+#SRCS									 := $(shell find $(SRC_DIRS)  -name *.c -or -name *.s)
+OBJS									:= $(SRCS:%=$(BUILD_DIR)/%.o)
+DEPS									:= $(OBJS:.o=.d)
 
-CPPFLAGS ?= $(INC_FLAGS) -MMD -MP
+#include/HeadhFile path for source code info
+INC_DIRS							:= $(shell find $(SRC_DIRS) -type d)
+INC_DIRS							+= ./include
+INC_DIRS							+= $(INC_DIRS_SHARED)
+INC_FLAGS							:= $(addprefix -I,$(INC_DIRS))
 
-CFLAGS          ?= $(INC_FLAGS) -MMD -MP
+CFLAGS								?= $(INC_FLAGS) -MMD -MP
+CPPFLAGS							?= $(INC_FLAGS) -MMD -MP
 
 
 #DEBFLAGS ?= -O2 -g
@@ -114,12 +119,14 @@ compile : $(BUILD_DIR)/$(TARGET_EXEC) $(BUILD_DIR)/libs/$(TOP_OBJ_SHARED)
 #compile:  $(BUILD_DIR)/$(TOP_OBJ_SHARED)
 
 $(BUILD_DIR)/$(TARGET_EXEC): $(OBJS) $(OBJ_SHARED)
-	$(CC) $(OBJS) $(OBJ_SHARED) -o $@ $(LDFLAGS)
+	$(CXX) $(OBJS) $(OBJ_SHARED) -o $@ $(LDFLAGS)
+#	$(CC) $(OBJS) $(OBJ_SHARED) -o $@ $(LDFLAGS)
 
 ### shared lib, the name of libs is set by manual.
 $(BUILD_DIR)/libs/$(TOP_OBJ_SHARED): $(SRC_SHARED)
 	$(MKDIR_P) $(dir $@)
-	$(CC) $(SRC_SHARED)  $(CFLAGS_SHARED) -o $@
+	$(CXX) $(SRC_SHARED)  $(CPPFLAGS_SHARED) -o $@
+#	$(CC) $(SRC_SHARED)  $(CFLAGS_SHARED) -o $@
 #	$(CC) $(SRC_SHARED) $(CFLAGS)  $(CFLAGS_SHARED) -o $@
 #	$(CC) $(SRC_SHARED) -o $@ -fPIC -shared
 #	$(CC) $(OBJ_SHARED) -o $@ $^ $(LDFLAGS)
@@ -140,7 +147,7 @@ $(BUILD_DIR)/%.c.o: %.c
 # c++ source
 $(BUILD_DIR)/%.cpp.o: %.cpp
 	$(MKDIR_P) $(dir $@)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CPPFLAGS) $(DEBFLAGS) $(CXXFLAGS) -c $< -o $@
 
 #.PHONY: compile
 
