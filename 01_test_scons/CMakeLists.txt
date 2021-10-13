@@ -15,13 +15,14 @@ FILE(GLOB SRC_LIST "${PROJECT_SOURCE_DIR}/src/*.c" "${PROJECT_SOURCE_DIR}/src/*.
 
 #add the shared source code of the file path
 #FILE(GLOB SRC_SHARED_LIST "${PROJECT_SOURCE_DIR}/src_shared/*.c")
-FILE(GLOB SRC_SHARED_LIST "${PROJECT_SOURCE_DIR}/src_shared/*.c" "${PROJECT_SOURCE_DIR}/src_shared/*.cpp" "${PROJECT_SOURCE_DIR}/src_shared/*.s")
+#FILE(GLOB SRC_SHARED_LIST "${PROJECT_SOURCE_DIR}/src_shared/*.c" "${PROJECT_SOURCE_DIR}/src_shared/*.cpp" "${PROJECT_SOURCE_DIR}/src_shared/*.s")
+FILE(GLOB SRC_SHARED_LIST "${PROJECT_SOURCE_DIR}/shared/src/*.c" "${PROJECT_SOURCE_DIR}/shared/src/*.cpp" "${PROJECT_SOURCE_DIR}/shared/src/*.s")
 ###### MESSAGE(STATUS ${SRC_SHARED_LIST})
 
 ###### 指定头文件目录
 #####INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/include)
 # include path
-INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/include)
+INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/shared/header)
 
 # 指定输出 .so 动态库的目录位置
 #SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/libShared)

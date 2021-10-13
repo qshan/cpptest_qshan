@@ -12,12 +12,15 @@
 Import("env")
 Import("opt")
 Import("dbg")
+
 #
 #env.Program('test01' ,Glob('*.c') ,CPPPATH=['../include'] ,LIBS=['Test01SharedLib'] ,LIBPATH=['../build_sc_shared'])
 #env.Program('test01' ,Glob('*.c') ,CPPPATH=['../include'] ,LIBS=['Test01SharedLib'] ,LIBPATH=['../src_shared'])
 #env.Program('test01' ,Glob('*.[s|c|cpp]') ,CPPPATH=['../include'] ,LIBS=['Test01SharedLib'] ,LIBPATH=['../src_shared'])
 #env.Program('test01' ,Glob('*.c*') ,CPPPATH=['../include'] ,LIBS=['Test01SharedLib'] ,LIBPATH=['../src_shared'])
-env.Program('test01' ,Glob('*.c[cp]*') ,CPPPATH=['../include'] ,LIBS=['Test01SharedLib'] ,LIBPATH=['../src_shared'])
+#env.Program('test01' ,Glob('*.c[cp]*') ,CPPPATH=['../include'] ,LIBS=['Test01SharedLib'] ,LIBPATH=['../src_shared'])
+
+env.Program('test01' ,Glob('*.c[cp]*') ,CPPPATH=['../include' ,'../shared/header'] ,LIBS=['Test01SharedLib'] ,LIBPATH=['../shared/src'])
 
 #opt.Program('test01-opt' ,Glob('*.c') ,CPPPATH=['../include'] ,LIBS=['Test01SharedLib'] ,LIBPATH=['../src_shared'])
 #dbg.Program('test01-dbg' ,Glob('*.c') ,CPPPATH=['../include'] ,LIBS=['Test01SharedLib'] ,LIBPATH=['../src_shared'])

@@ -80,20 +80,27 @@ DEPS := $(OBJS:.o=.d)
 #source code for shared lib
 #SRC_SHARED  = $(wildcard src_shared/*.c)
 #SRC_SHARED  = $(wildcard src_shared/*.c src_shared/*.cpp src_shared/*.s)
-SRC_SHARED  = $(wildcard src_shared/*.c src_shared/*.cpp)
+#SRC_SHARED  = $(wildcard src_shared/*.c src_shared/*.cpp)
+SRC_SHARED  = $(wildcard shared/src/*.c shared/src/*.cpp)
 #OBJ_SHARED  = $(SRC:.c=.o)
 OBJ_SHARED  = $(SRC_SHARED:%=$(BUILD_DIR)/%.o)
 
 
 #include/HeadhFile path info
+INC_DIRS_SHARED += ./shared/header
+INC_FLAGS_SHARED := $(addprefix -I,$(INC_DIRS_SHARED))
+CFLAGS_SHARED   ?= -fPIC -shared $(INC_FLAGS_SHARED)
+
+#include/HeadhFile path info
 INC_DIRS := $(shell find $(SRC_DIRS) -type d)
 INC_DIRS += ./include
+INC_DIRS += $(INC_DIRS_SHARED)
 INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
 CPPFLAGS ?= $(INC_FLAGS) -MMD -MP
 
 CFLAGS          ?= $(INC_FLAGS) -MMD -MP
-CFLAGS_SHARED   ?= -fPIC -shared
+
 
 #DEBFLAGS ?= -O2 -g
 DEBFLAGS ?= -O -g -Wall # "-O" is needed to expand inlines

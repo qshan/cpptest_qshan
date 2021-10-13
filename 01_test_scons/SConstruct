@@ -54,7 +54,7 @@ Export ('opt', 'dbg')
 #          )
 
 
-SConscript(['src_shared/SConscript']
+SConscript(['shared/src/SConscript']
 #            , variant_dir='build_sc_shared'
           )
 SConscript(['src/SConscript']

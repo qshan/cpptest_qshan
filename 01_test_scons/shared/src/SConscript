@@ -10,7 +10,9 @@ Import('*')
 #env.Library('Test01SharedLib' ,Glob('*.[s|c|cpp]') ,CPPPATH=['../include'])
 #env.Library('Test01SharedLib' ,Glob('*.cpp') ,CPPPATH=['../include'])
 #env.Library('Test01SharedLib' ,Glob('*.c*') ,CPPPATH=['../include'])
-env.Library('Test01SharedLib' ,Glob('*.c[cp]*') ,CPPPATH=['../include'])
+#env.Library('Test01SharedLib' ,Glob('*.c[cp]*') ,CPPPATH=['../include'])
+
+env.Library('Test01SharedLib' ,Glob('*.c[cp]*') ,CPPPATH=['../header'])
 
 #Program('',[])
 
