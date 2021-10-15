@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # run like this
 
 if [ ! -d ./build_cmake ]; then

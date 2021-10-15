@@ -104,7 +104,7 @@ void son_test_qshan::set_job (string u_job)
 }
 void son_test_qshan::display_job (void)
 {
-  cout << "Job is " << job;
+  cout << "Job is " << job <<  std::endl;
 }
 string son_test_qshan::get_job (void)
 {
@@ -128,7 +128,7 @@ void class_test_qshan(void)
   son_test_qshan test_son_test_qshan("input", 10, "input");
 
   cout << std::endl  << std::endl;
-  test_son_test_qshan.set_name("XiaoXiao");
+  test_son_test_qshan.set_name("XiaoXiaoSon");
   test_son_test_qshan.display_name();
   cout << std::endl;
   test_son_test_qshan.set_job("Student");

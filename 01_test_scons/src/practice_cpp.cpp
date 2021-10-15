@@ -24,6 +24,11 @@ void struct_test_qshan(void)
     string job;
   } test_struct_test_qshan1;
 
+  //cout << "\n" <<  std::endl;
+  cout <<  std::endl << "--------------------------------------------------" <<  std::endl;
+  cout << "start of " << __func__ << " in " << __FILE__ <<  std::endl <<  std::endl;
+  //cout << "\n" <<  std::endl;
+  //cout <<  std::endl;
 
   struct_test_qshan test_struct_test_qshan;
 
@@ -42,7 +47,10 @@ void struct_test_qshan(void)
 
   struct_test_qshan2 test_struct_test_qshan2;
 
-  cout << "##this is end of## " << __func__ << " in " << __FILE__ <<  std::endl;
+  cout <<  std::endl << "end of " << __func__ << " in " << __FILE__ <<  std::endl;
+  cout << "--------------------------------------------------" <<  std::endl <<  std::endl;
+  //cout << "\n" <<  std::endl;
+  //cout <<  std::endl;
 }
 
 
@@ -62,7 +70,10 @@ person_test_qshan::person_test_qshan(string u_name, int u_old)
 {
   name = u_name;
   old = u_old;
-  cout << "##this the construct function of class person_test_qshan##" << std::endl;
+  //cout << std::endl << "##this the constructor function of class person_test_qshan##" << std::endl;
+  //std::cout <<  std::endl << "end of " << __func__ << " in " << __FILE__ <<  std::endl;
+  //cout <<  std::endl << "this is the " << __func__ << " function in " << __PRETTY_FUNCTION__ << " in " << __FILE__ <<  std::endl;
+  cout <<  std::endl << "this is the " << __PRETTY_FUNCTION__ << " in " << __FILE__ <<  std::endl;
 }
 void person_test_qshan::set_name(string u_name)
 {
@@ -70,7 +81,7 @@ void person_test_qshan::set_name(string u_name)
 }
 void person_test_qshan::display_name(void)
 {
-  cout << "name is " << name;
+  cout << "name is " << name << std::endl;
 }
 string person_test_qshan::get_name(void)
 {
@@ -104,7 +115,7 @@ void son_test_qshan::set_job (string u_job)
 }
 void son_test_qshan::display_job (void)
 {
-  cout << "Job is " << job;
+  cout << "Job is " << job << std::endl;
 }
 string son_test_qshan::get_job (void)
 {
@@ -116,11 +127,14 @@ void class_test_qshan(void)
 {
   //int i = 0;
 
+  //cout << std::endl  << std::endl;
+  cout << std::endl << "--------------------------------------------------" <<  std::endl;
+  cout << "start of " << __func__ << " in " << __FILE__ <<  std::endl;
 
   //person_test_qshan test_person_test_qshan("input", 0);
   person_test_qshan test_person_test_qshan("Xiaoxiao", 10);
 
-  cout << std::endl  << std::endl;
+  //cout << std::endl;
   test_person_test_qshan.set_name("Xiao-xiao");
   test_person_test_qshan.display_name();
 
@@ -134,6 +148,7 @@ void class_test_qshan(void)
   test_son_test_qshan.set_job("Student");
   test_son_test_qshan.display_job();
 
-  cout << std::endl  << std::endl;
-  cout << "##this is end of## " << __func__ << " in " << __FILE__ <<  std::endl;
+  //cout << std::endl  << std::endl;
+  cout << std::endl << "end of " << __func__ << " in " << __FILE__ <<  std::endl;
+  cout << "--------------------------------------------------" <<  std::endl;
 }
