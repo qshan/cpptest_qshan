@@ -40,7 +40,7 @@ TARGET_EXEC ?= test02
 
 BUILD_DIR ?= ./build_make
 #SRC_DIRS ?= ./src
-SRC_DIRS ?= src
+SRC_DIRS ?= test/src
 #INC_DIRS							:= $(shell find $(SRC_DIRS) -type d)
 SRC_DIRS += libs/say_hello/src
 SRC_DIRS += libs/practice/src
@@ -81,9 +81,9 @@ DEPS                  := $(OBJS:.o=.d)
 
 #include/HeadhFile path for source code info
 INC_DIRS              := $(shell find $(SRC_DIRS) -type d)
-INC_DIRS              +=  ./include \
-                          ./libs/say_hello/header \
-                          ./libs/practice/header
+INC_DIRS              +=  ./test/header \
+													./libs/say_hello/header \
+													./libs/practice/header
 INC_DIRS              += $(INC_DIRS_SHARED)
 INC_FLAGS             := $(addprefix -I,$(INC_DIRS))
 

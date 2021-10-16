@@ -11,9 +11,9 @@ PROJECT (Test02)
 # add file list, SET(SRC_LIST tested02.c testates02.c)
 #FILE(GLOB SRC_LIST "${PROJECT_SOURCE_DIR}/src/*.c" "${PROJECT_SOURCE_DIR}/src/*.cpp" "${PROJECT_SOURCE_DIR}/src/*.s ${PROJECT_SOURCE_DIR}/libs/*/src/*.c" "${PROJECT_SOURCE_DIR}/libs/*src/*.cpp" "${PROJECT_SOURCE_DIR}/libs/*src/*.s")
 FILE(GLOB SRC_LIST
-  "${PROJECT_SOURCE_DIR}/src/*.c"
-  "${PROJECT_SOURCE_DIR}/src/*.cpp"
-  "${PROJECT_SOURCE_DIR}/src/*.s"
+  "${PROJECT_SOURCE_DIR}/test/src/*.c"
+  "${PROJECT_SOURCE_DIR}/test/src/*.cpp"
+  "${PROJECT_SOURCE_DIR}/test/src/*.s"
   "${PROJECT_SOURCE_DIR}/libs/*/src/*.c"
   "${PROJECT_SOURCE_DIR}/libs/*/src/*.cpp"
   "${PROJECT_SOURCE_DIR}/libs/*/src/*.s")
@@ -30,7 +30,7 @@ FILE(GLOB SRC_SHARED_LIST
 # include path for project
 #INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/libs/*/header)
 INCLUDE_DIRECTORIES(
-  ${PROJECT_SOURCE_DIR}/include
+  ${PROJECT_SOURCE_DIR}/test/header
   ${PROJECT_SOURCE_DIR}/libs/practice/header
 #TODO#  ${PROJECT_SOURCE_DIR}/libs/*/header
   ${PROJECT_SOURCE_DIR}/libs/say_hello/header)
