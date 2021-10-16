@@ -4,28 +4,15 @@
 
 #Program('',[])
 
-#Program('test02' ,['../src/test02.c' ,CPPPATH=['../src' ,'../scr_shared' ,'../include'] ,['../src/say_hello_02.c'] ,LIBS=['Test02SharedLib'] ,LIBPATH=['.'])
-#Program('test02' ,['../src/test02.c' ,'../src/say_hello_02.c'] ,CPPPATH=['../include'] ,LIBS=['Test02SharedLib'] ,LIBPATH=['.'])
-#Program('test02' ,['test02.c' ,'say_hello_02.c'] ,CPPPATH=['../include'] ,LIBS=['Test02SharedLib'] ,LIBPATH=['../src_shared'])
-#Program('test02' ,Glob('*.c') ,CPPPATH=['../include'] ,LIBS=['Test02SharedLib'] ,LIBPATH=['../src_shared'])
-
 Import("env")
 Import("opt")
 Import("dbg")
 
 #
-#env.Program('test02' ,Glob('*.c') ,CPPPATH=['../include'] ,LIBS=['Test02SharedLib'] ,LIBPATH=['../build_sc_shared'])
-#env.Program('test02' ,Glob('*.c') ,CPPPATH=['../include'] ,LIBS=['Test02SharedLib'] ,LIBPATH=['../src_shared'])
-#env.Program('test02' ,Glob('*.[s|c|cpp]') ,CPPPATH=['../include'] ,LIBS=['Test02SharedLib'] ,LIBPATH=['../src_shared'])
-#env.Program('test02' ,Glob('*.c*') ,CPPPATH=['../include'] ,LIBS=['Test02SharedLib'] ,LIBPATH=['../src_shared'])
-#env.Program('test02' ,Glob('*.c[cp]*') ,CPPPATH=['../include'] ,LIBS=['Test02SharedLib'] ,LIBPATH=['../src_shared'])
-
-#env.Program('test02' ,Glob('*.c[cp]*') ,CPPPATH=['../include' ,'../libs/shared/header' ,'../libs/say_hello/header' ,'../libs/practice/header'] ,LIBS=['Test02SharedLib'] ,LIBPATH=['../libs/shared/src' ,'../libs/practice/src' ,'../libs/say_hello/src' ])
 #env.Program('test02' ,Glob('./src/*.c[cp]*') ,CPPPATH=['./include' ,'./libs/shared/header' ,'./libs/say_hello/header' ,'./libs/practice/header'] ,LIBS=['Test02SharedLib'] ,LIBPATH=['./libs/shared/src' ,'./libs/practice/src' ,'./libs/say_hello/src' ])
 
 #obj = env.Object([Glob('./src/*.c[cp]*')])
 #obj = env.Object([Glob('./src/*.c[cp]*')] ,CCFLAGS='' ,CPPPATH=['./header'])
-#obj = env.Object([Glob('./src/*.c[cp]*')] ,CCFLAGS='' ,CPPPATH=['./include'])
 obj = env.Object([Glob('./src/*.c[cp]*')] ,CCFLAGS='' ,CPPPATH=['./header' ,'../libs/shared/header' ,'../libs/say_hello/header' ,'../libs/practice/header'])
 Return('obj')
 
