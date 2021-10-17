@@ -110,7 +110,7 @@ DEBFLAGS += -g
 # '-Omin' is optimize for code size
 DEBFLAGS ?= -Omin
 # '-Wall' is to enable the all warning
-#DEBFLAGS += -Wall
+DEBFLAGS += -Wall
 # '-Werror' is to make all warnings into errors
 DEBFLAGS += -Werror
 # '-Wfatal-errors' is to make compile abort when the hit the errors firstly
