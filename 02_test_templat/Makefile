@@ -91,8 +91,8 @@ DEPS                  := $(OBJS:.o=.d)
 #include/HeadhFile path for source code info
 INC_DIRS              := $(shell find $(SRC_DIRS) -type d)
 INC_DIRS              +=  $(PRO_ROOT_PATH)/test/header \
-													$(PRO_ROOT_PATH)/libs/say_hello/header \
-													$(PRO_ROOT_PATH)/libs/practice/header
+                          $(PRO_ROOT_PATH)/libs/say_hello/header \
+                          $(PRO_ROOT_PATH)/libs/practice/header
 INC_DIRS              += $(INC_DIRS_SHARED)
 INC_FLAGS             := $(addprefix -I,$(INC_DIRS))
 
