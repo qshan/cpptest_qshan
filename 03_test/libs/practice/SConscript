@@ -1,0 +1,6 @@
+#Import('env')
+Import('*')
+
+#obj = env.Object([Glob('./src/*.c[cp]*')])
+obj = env.Object([Glob('./src/*.c[cp]*')] ,CCFLAGS='' ,CPPPATH=['./header'])
+Return('obj')

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+scons -c
+#scons
+#scons --tree=all
+scons --tree=status
+#./src/test03.cpp
+./test03
+#scons -c
