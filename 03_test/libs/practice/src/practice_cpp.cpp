@@ -65,25 +65,35 @@ public:
   void display_name(void);
   string get_name(void);
   person_test_qshan(string u_name, int u_old);
+  ~person_test_qshan();
 };
 
 person_test_qshan::person_test_qshan(string u_name, int u_old)
 {
   name = u_name;
   old = u_old;
-  //cout << std::endl << "##this the constructor function of class person_test_qshan##" << std::endl;
-  //std::cout <<  std::endl << "end of " << __func__ << " in " << __FILE__ <<  std::endl;
-  //cout <<  std::endl << "Run " << __func__ << " in " << __PRETTY_FUNCTION__ << " in " << __FILE__ <<  std::endl;
-  cout <<  std::endl << "Run the " << __PRETTY_FUNCTION__ << " in " << __FILE__ <<  std::endl;
+  //std::cout <<  std::endl << "Run " << __func__ << " in " << __FILE__ <<  std::endl;
+  std::cout <<  std::endl << "Run " << __PRETTY_FUNCTION__ << " in " << __FILE__ <<  std::endl;
 }
+
+person_test_qshan::~person_test_qshan()
+{
+  cout << std::endl << "--------------------------------------------------" <<  std::endl;
+  //std::cout <<  std::endl << "Run the " << __PRETTY_FUNCTION__ << " in " << __FILE__ <<  std::endl;
+  std::cout <<  std::endl << "Run " << __PRETTY_FUNCTION__ << " in " << __FILE__ <<  std::endl;
+  cout << std::endl << "--------------------------------------------------" <<  std::endl;
+}
+
 void person_test_qshan::set_name(string u_name)
 {
   name = u_name;
 }
+
 void person_test_qshan::display_name(void)
 {
   cout << "name is " << name << std::endl;
 }
+
 string person_test_qshan::get_name(void)
 {
   return name;
@@ -101,24 +111,36 @@ public:
   void display_job (void);
   string get_job (void);
   son_test_qshan (string u_name, int u_old, string u_job);
+  ~son_test_qshan ();
 };
 
 //##### inherit the function from the construct function of parent class !!!
-son_test_qshan::son_test_qshan (string u_name, int u_old, string u_job):person_test_qshan(u_name, u_old)
+son_test_qshan::son_test_qshan (string u_name, int u_old, string u_job)
+  :person_test_qshan(u_name, u_old)
 {
   //name = u_name;
   //old = u_old;
   job = u_job;
 }
 
+son_test_qshan::~son_test_qshan ()
+{
+  cout << std::endl << "--------------------------------------------------" <<  std::endl;
+  std::cout <<  std::endl << "Run " << __PRETTY_FUNCTION__ << " in " << __FILE__ <<  std::endl;
+  //std::cout << "Run function: " << __func__ << " in " << __FILE__ <<  std::endl;
+  cout << std::endl << "--------------------------------------------------" <<  std::endl;
+}
+
 void son_test_qshan::set_job (string u_job)
 {
   job = u_job;
 }
+
 void son_test_qshan::display_job (void)
 {
-  cout << "Job is " << job << std::endl;
+  std::cout << "Job is " << job << std::endl;
 }
+
 string son_test_qshan::get_job (void)
 {
   return job;
