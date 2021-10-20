@@ -6,7 +6,7 @@ using std::string;
 
 int say_hello03()
 {
-  #if 1
+  #if 0
 
     std::cout << std::endl << "--------------------------------------------------" << std::endl << std::endl;
     std::cout << "Hello, test03" << std::endl;
