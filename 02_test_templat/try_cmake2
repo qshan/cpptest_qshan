@@ -1,0 +1,20 @@
+#!/bin/bash
+# run like this
+
+export Test02BuildPath="./build_cmake2"
+
+if [ ! -d ${Test02BuildPath} ]; then
+   mkdir -p ${Test02BuildPath}
+fi
+
+if [ -d ${Test02BuildPath} ]; then
+  cd ${Test02BuildPath}
+  #cmake -G "Unix Makefiles" ..
+  cmake ..
+  make clean
+  make
+#  ./Test13_Hello
+  ./Test02
+  cd -
+#  mkdir build_cmake
+fi
