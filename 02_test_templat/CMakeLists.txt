@@ -5,8 +5,29 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
 #Project Name
 #PROJECT (Test02_Hello)
 #PROJECT (SayHello02)
-PROJECT (Test02)
+#PROJECT (Test02)
+PROJECT (Test02 VERSION 1.0)
 #SET(PROJECT_NAME "${PROJECT}")
+
+#------------------------------
+SET(CMAKE_C_COMPILER    clang)
+SET(CMAKE_CPP_COMPILER  clang++)
+#set(CMAKE_C_COMPILER    iccarm)
+#set(CMAKE_CPP_COMPILER  iccarm)
+#------------------------------
+#set here or set in the cmake argument in shell, one time is enough
+SET(CMAKE_BUILD_TYPE Debug)
+#SET(CMAKE_BUILD_TYPE RelWithDebInfo)
+#SET(CMAKE_BUILD_TYPE Release)
+#SET(CMAKE_BUILD_TYPE MinSizeRel)
+
+SET(CMAKE_CXX_FLAGS_DEBUG   "$ENV{CXXFLAGS} -O0 -Wall -g2 -ggdb")
+SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
+#ADD_COMPILE_OPTIONS(-Wall -g)
+#------------------------------
+SET(CMAKE_CXX_STANDARD   11)
+SET(CMAKE_CXX_STANDARD_REQUIRED   True)
+#------------------------------
 
 # add file list, SET(SRC_LIST tested02.c testates02.c)
 #FILE(GLOB SRC_LIST "${PROJECT_SOURCE_DIR}/src/*.c" "${PROJECT_SOURCE_DIR}/src/*.cpp" "${PROJECT_SOURCE_DIR}/src/*.s ${PROJECT_SOURCE_DIR}/libs/*/src/*.c" "${PROJECT_SOURCE_DIR}/libs/*src/*.cpp" "${PROJECT_SOURCE_DIR}/libs/*src/*.s")
@@ -53,17 +74,30 @@ ADD_LIBRARY(Test02Shared SHARED ${SRC_SHARED_LIST})
 
 
 #print check the variable content in env
-MESSAGE(STATUS "This is PROJECT             " ${PROJECT})
-MESSAGE(STATUS "This is PROJECT_NAME        " ${PROJECT_NAME})
-MESSAGE(STATUS "This is CMAKE_PROJECT_NAME  " ${CMAKE_PROJECT_NAME})
-# 输出打印构建目录
-MESSAGE(STATUS "This is HELLO_BINARY_DIR " ${HELLO_BINARY_DIR})
-# 输出打印资源目录
-MESSAGE(STATUS "This is HELLO_SOURCE_DIR " ${HELLO_SOURCE_DIR})
-# 输出打印资源目录，与HELLO_SOURCE_DIR 一样
-MESSAGE(STATUS "This is PROJECT_SOURCE_DIR " ${PROJECT_SOURCE_DIR})
-# 输出打印 CMake 资源目录，与 PROJECT_SOURCE_DIR 一样
-MESSAGE(STATUS "This is CMAKE_SOURCE_DIR " ${CMAKE_SOURCE_DIR})
+MESSAGE(STATUS "------------------------------------------------------------")
+MESSAGE(STATUS "Check/confirm variable the status")
+MESSAGE(STATUS "{PROJECT}               "   ${PROJECT})
+MESSAGE(STATUS "{PROJECT_NAME}          "   ${PROJECT_NAME})
+MESSAGE(STATUS "{PROJECT_VERSION}       "   ${PROJECT_VERSION})
+MESSAGE(STATUS "{CMAKE_PROJECT_NAME}    "   ${CMAKE_PROJECT_NAME})
+#------------------------------
+MESSAGE(STATUS "{HELLO_SOURCE_DIR}      "   ${HELLO_SOURCE_DIR})
+#------------------------------
+MESSAGE(STATUS "{PROJECT_BINARY_DIR}    "   ${PROJECT_BINARY_DIR})
+MESSAGE(STATUS "{PROJECT_SOURCE_DIR}    "   ${PROJECT_SOURCE_DIR})
+#------------------------------
+MESSAGE(STATUS "{CMAKE_BINARY_DIR}      "   ${CMAKE_BINARY_DIR})
+MESSAGE(STATUS "{CMAKE_SOURCE_DIR}      "   ${CMAKE_SOURCE_DIR})
+MESSAGE(STATUS "{CMAKE_BUILD_TOOL}      "   ${CMAKE_BUILD_TOOL})
+#------------------------------
+MESSAGE(STATUS "{CMAKE_C_COMPILER}      "   ${CMAKE_C_COMPILER})
+MESSAGE(STATUS "{CMAKE_CPP_COMPILER}    "   ${CMAKE_CPP_COMPILER})
+#------------------------------
+MESSAGE(STATUS "{CXXFLAGS}              "   ${CXXFLAGS})
+MESSAGE(STATUS "{CMAKE_CXX_FLAGS_DEBUG} "   ${CMAKE_CXX_FLAGS_DEBUG})
+MESSAGE(STATUS "{CXX_FLAGS_RELEASE}     "   ${CXX_FLAGS_RELEASE})
+MESSAGE(STATUS "------------------------------------------------------------")
+#------------------------------
 
 # 生成可执行文件 hello ，${SRC_LIST}是引用变量，也就是源文件 hello.cpp
 # gen ext file, list the dependancy file here
