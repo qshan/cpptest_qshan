@@ -19,7 +19,13 @@ env = Environment(CC='clang')
 env = Environment(CXX='clang++')
 #
 #env.Append(CCFLAGS=' -Wall -g')
+#env.Append(CCFLAGS=' -O2 -Wall -g')
 env.Append(CCFLAGS=' -O2 -Wall -g')
+env.Append(CFLAGS=' -O2 -Wall -g')
+#
+#TODO#worked
+env.Append(CCFLAGS=' -DPRINT_DEBUG_ENABLE=1')
+env.Append(CFLAGS=' -DPRINT_DEBUG_ENABLE=1')
 #
 env.Replace(CC='clang')
 env.Replace(CXX='clang++')
@@ -30,7 +36,9 @@ env.Append(MyVariableAdded02=['MyVariableAdded02'])
 print("MyVariableAdded02 = %s" % env['MyVariableAdded02'])
 #
 opt = env.Clone(CCFLAGS=[' -O2'])
+opt = env.Clone(CFLAGS=[' -O2'])
 dbg = env.Clone(CCFLAGS=[' -Wall -g'])
+dbg = env.Clone(CFLAGS=[' -Wall -g'])
 #
 #o = opt.Object('test02-o' ,['foo.c'])
 #opt.Program(o)
@@ -48,6 +56,7 @@ Export ('opt', 'dbg')
 print("[env.CC]       is  %s" % env['CC'])
 print("[env.CXX]      is  %s" % env['CXX'])
 print("[env.CCFLAGS]  is  %s" % env['CCFLAGS'])
+print("[env.CFLAGS]   is  %s" % env['CFLAGS'])
 
 objs  = []
 header_file_path  = []
