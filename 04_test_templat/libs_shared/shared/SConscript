@@ -3,7 +3,14 @@ Import('*')
 
 #env.Library('TestSharedLib' ,Glob('*.c[cp]*') ,CPPPATH=['../header'])
 #env.StaticLibrary('TestStaticSharedLib' ,Glob('./src/*.c[cp]*') ,CPPPATH=['../header'])
-env.SharedLibrary('TestSharedSharedLib' ,Glob('./src/*.c[cp]*') ,CPPPATH=['./header'])
+env.SharedLibrary ('TestSharedSharedLib'
+                  ,Glob('./src/*.c[cp]*')
+                  ,CPPPATH= [
+                              './header'
+                            #TODO# add item one by one by manual
+                            #, './header'
+                            ]
+                  )
 
 #obj = env.Object([Glob('./src/*.c[cp]*')])
 obj = env.Object([Glob('./src/*.c[cp]*')] ,CCFLAGS='' ,CPPPATH=['./header'])
