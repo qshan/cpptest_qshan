@@ -1,6 +1,6 @@
 #Library('',[])
-#Library('Test02SharedLib', ['../src_shared/test02_shared.c'])
-#Library('Test02SharedLib', ['../src_shared/test02_shared.c'] ,CPPPATH=['../include'])
+#Library('TestSharedLib', ['../src_shared/test_shared.c'])
+#Library('TestSharedLib', ['../src_shared/test_shared.c'] ,CPPPATH=['../include'])
 
 #Program('',[])
 
@@ -9,7 +9,7 @@ Import("opt")
 Import("dbg")
 
 #
-#env.Program('test02' ,Glob('./src/*.c[cp]*') ,CPPPATH=['./include' ,'./libs/shared/header' ,'./libs/say_hello/header' ,'./libs/practice/header'] ,LIBS=['Test02SharedLib'] ,LIBPATH=['./libs/shared/src' ,'./libs/practice/src' ,'./libs/say_hello/src' ])
+#env.Program('test' ,Glob('./src/*.c[cp]*') ,CPPPATH=['./include' ,'./libs/shared/header' ,'./libs/say_hello/header' ,'./libs/practice/header'] ,LIBS=['TestSharedLib'] ,LIBPATH=['./libs/shared/src' ,'./libs/practice/src' ,'./libs/say_hello/src' ])
 
 #obj = env.Object([Glob('./src/*.c[cp]*')])
 #obj = env.Object([Glob('./src/*.c[cp]*')] ,CCFLAGS='' ,CPPPATH=['./header'])
@@ -17,11 +17,12 @@ Import("dbg")
 obj = env.Object([Glob('./src/*.c[cp]*')]
                   ,CCFLAGS=''
                   ,CPPPATH=[
-                            './header'
-                            ,'../libs/shared/header'
-                            ,'../libs/practice/header'
-                            ,'../libs/say_hello/header'])
+                              './header'
+                            , '../libs_shared/shared/header'
+                            , '../libs/practice/header'
+                            , '../libs/say_hello/header'
+                            ])
 Return('obj')
 
-#opt.Program('test02-opt' ,Glob('*.c') ,CPPPATH=['../include'] ,LIBS=['Test02SharedLib'] ,LIBPATH=['../src_shared'])
-#dbg.Program('test02-dbg' ,Glob('*.c') ,CPPPATH=['../include'] ,LIBS=['Test02SharedLib'] ,LIBPATH=['../src_shared'])
+#opt.Program('test-opt' ,Glob('*.c') ,CPPPATH=['../include'] ,LIBS=['TestSharedLib'] ,LIBPATH=['../src_shared'])
+#dbg.Program('test-dbg' ,Glob('*.c') ,CPPPATH=['../include'] ,LIBS=['TestSharedLib'] ,LIBPATH=['../src_shared'])

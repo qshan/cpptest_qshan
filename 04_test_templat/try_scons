@@ -4,6 +4,6 @@ scons -c
 #scons
 #scons --tree=all
 scons --tree=status
-#./src/test02.cpp
-./test02
+#TODO#scons
+./test_run
 #scons -c

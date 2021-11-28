@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <iostream>
-#include "test02.h"
+#include "test_main.h"
 
 using namespace std;
 using std::string;
@@ -10,16 +10,16 @@ int main()
 
   std::cout <<  std::endl << "===================================================" << std::endl;
   std::cout << "start of " << __func__ << " in " << __FILE__ <<  std::endl;
-  std::cout << "Hello test02 " << std::endl << std::endl;
+  std::cout << "Hello test " << std::endl << std::endl;
 
-  say_hello02();
+  say_hello();
 
-  //printf("Try to call function_shared_test02(1), get: 0x%x "
-  //    , function_shared_test02(1)
+  //printf("Try to call function_shared_test(1), get: 0x%x "
+  //    , function_shared_test(1)
   //    );
 
-  //cout << "Try to call function_shared_test02(1), get: 0x%x \n" <<inputdata << std::endl;
-  cout << "Try to call function_shared_test02(1), get: " <<function_shared_test02(1) << std::endl;
+  //cout << "Try to call function_shared_test(1), get: 0x%x \n" <<inputdata << std::endl;
+  cout << "Try to call function_shared_test(1), get: " <<function_shared_test(1) << std::endl;
 
 
     int inputdata;
@@ -75,7 +75,7 @@ int main()
   //cout <<  std::endl;
   //std::cout <<  std::endl << "##this is end of cpptest_qshan## ^-^" <<  std::endl;
   std::cout <<  std::endl << "end of " << __func__ << " in " << __FILE__ <<  std::endl;
-  std::cout << "Bye test02 ^-^" << std::endl;
+  std::cout << "Bye test ^-^" << std::endl;
   std::cout << "===================================================" << std::endl;
   //cout <<  std::endl;
   //std::cout << std::endl  << std::endl;

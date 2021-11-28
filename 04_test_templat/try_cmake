@@ -2,13 +2,14 @@
 
 # run like this
 
-export Test02BuildPath="./build_cmake"
-export Test02SourcePath="."
+export TestBuildPath="./build_cmake"
+export TestSourcePath="."
 
-  #cmake3.13#cmake -B${Test13BuildPath} -S${Test13SourcePath}
-  cmake -B${Test02BuildPath} -H${Test02SourcePath}
-  cd ${Test02BuildPath}
+  #cmake3.13
+  #cmake -B${TestBuildPath} -S${TestSourcePath}
+  cmake -B${TestBuildPath} -H${TestSourcePath}
+  cd ${TestBuildPath}
   make clean
   make
-  ./Test02
+  ./test_run
   cd -

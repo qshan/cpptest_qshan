@@ -1,22 +1,25 @@
 #good doc #https://scons.org/doc/production/HTML/scons-user.html#app-functions
 
 #Library('',[])
-#Library('Test02SharedLib', ['../src_shared/test02_shared.c'])
-#Library('Test02SharedLib', ['../src_shared/test02_shared.c'] ,CPPPATH=['../include'])
+#Library('TestSharedLib', ['../src_shared/test_shared.c'])
+#Library('TestSharedLib', ['../src_shared/test_shared.c'] ,CPPPATH=['../include'])
 
 #Program('',[])
 
-#Program('test02' ,['../src/test02.c' ,CPPPATH=['../src' ,'../scr_shared' ,'../include'] ,['../src/say_hello_02.c'] ,LIBS=['Test02SharedLib'] ,LIBPATH=['.'])
-#Program('test02' ,['../src/test02.c' ,'../src/say_hello_02.c'] ,CPPPATH=['../include'] ,LIBS=['Test02SharedLib'] ,LIBPATH=['.'])
+#Program('test' ,['../src/test.c' ,CPPPATH=['../src' ,'../scr_shared' ,'../include'] ,['../src/say_hello.c'] ,LIBS=['TestSharedLib'] ,LIBPATH=['.'])
+#Program('test' ,['../src/test.c' ,'../src/say_hello.c'] ,CPPPATH=['../include'] ,LIBS=['TestSharedLib'] ,LIBPATH=['.'])
 
 #SConstruct
 
-#env = Environment(CC='gcc' ,CCFLAGS=' -O2 -Wall -g' ,CPPDEFINES=['MyDefine02'])
+#env = Environment(CC='gcc' ,CCFLAGS=' -O2 -Wall -g' ,CPPDEFINES=['MyDefine'])
 #
 #env = Environment(CC='gcc')
 #env = Environment(CXX='g++')
 env = Environment(CC='clang')
-env = Environment(CXX='clang++')
+#env = Environment(CXX='clang++')
+env.Append(CXX='clang++')
+#
+#env.BuildDir('buildpath' ,'src')
 #
 #env.Append(CCFLAGS=' -Wall -g')
 #env.Append(CCFLAGS=' -O2 -Wall -g')
@@ -32,18 +35,18 @@ env.Replace(CXX='clang++')
 #
 env.Prepend(CPPDEFINES=['MyFirstDefine00'])
 env.Append(CPPDEFINES=['MyDefine02'])
-env.Append(MyVariableAdded02=['MyVariableAdded02'])
-print("MyVariableAdded02 = %s" % env['MyVariableAdded02'])
+env.Append(MyVariableAdded01=['MyVariableAdded01'])
+print("MyVariableAdded01 = %s" % env['MyVariableAdded01'])
 #
 opt = env.Clone(CCFLAGS=[' -O2'])
 opt = env.Clone(CFLAGS=[' -O2'])
 dbg = env.Clone(CCFLAGS=[' -Wall -g'])
 dbg = env.Clone(CFLAGS=[' -Wall -g'])
 #
-#o = opt.Object('test02-o' ,['foo.c'])
+#o = opt.Object('test-o' ,['foo.c'])
 #opt.Program(o)
 ##
-#d = dbg.Object('test02-d' ,['foo.c'])
+#d = dbg.Object('test-d' ,['foo.c'])
 #dbg.Program(d)
 
 Export ('env')
@@ -63,15 +66,17 @@ header_file_path  = []
 
 #            , variant_dir='build_sc'
 
-objs.append( SConscript(['./test/SConscript'] ,exports='env')             )
-objs.append( SConscript(['./libs/shared/SConscript'] , exports='env')     )
+objs.append( SConscript(['./test_main/SConscript'] ,exports='env')             )
+objs.append( SConscript(['./libs_shared/shared/SConscript'] , exports='env')     )
 objs.append( SConscript(['./libs/practice/SConscript'] , exports='env')   )
 objs.append( SConscript(['./libs/say_hello/SConscript'] , exports='env')  )
 
-#env.Program('test02' , objs)
-env.Program('test02' ,objs
+#env.Program('test' , objs)
+env.Program('test_run'
+        ,objs
         ,CPPPATH=[
-            './include'
-            ,'./libs/shared/header'
-            ,'./libs/say_hello/header'
-            ,'./libs/practice/header'])
+#            './include'
+#            ,'./libs/shared/header'
+#            ,'./libs/say_hello/header'
+#            ,'./libs/practice/header'
+            ])
