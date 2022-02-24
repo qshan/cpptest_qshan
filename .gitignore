@@ -2,7 +2,14 @@
 *.o
 *.d
 
+tags
+TAGS
+
+
+*.Debug/
+*.Debug
 
 !*.c
 !*.h
 !*.cpp
+*_log.txt
